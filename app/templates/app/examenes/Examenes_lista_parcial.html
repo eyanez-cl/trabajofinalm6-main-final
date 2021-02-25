@@ -1,0 +1,25 @@
+{% for examen in lista_examenes %}
+
+<tr>
+  <td>{{ examen.id }}</td>
+  <td>{{ examen.nombre }}</td>
+  <td>{{ examen.valor }}</td>
+  <td>{{ examen.observaciones }}</td>
+  <td>{{ examen.fecha }}</td>
+  <td>{{ examen.paciente}}</td>
+  <td>
+  <button type="button" class="btn btn-warning btn-block js-editar" data-url="{% url 'app:editar_examen' examen.id %}">
+    <span class="glyphicon glyphicon-trash"></span>Editar
+  </button>
+  </td>
+  <td>
+    <button type="button" class="btn btn-danger btn-block js-delete" data-url="{% url 'app:eliminar_examen' examen.id %}">
+      <span class="glyphicon glyphicon-trash"></span> Eliminar
+    </button>
+  </td>
+</tr>
+{% empty %}
+<tr>
+  <td colspan="10" class="text-center bg-warning">No hay examenes</td>
+</tr>
+{% endfor %}

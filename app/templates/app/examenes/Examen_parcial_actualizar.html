@@ -1,0 +1,32 @@
+
+ <div class="modal-header border-bottom-0">
+    <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+ </button>
+</div>
+
+<form method="POST" action="{% url 'app:editar_examen'  id %}" class="js-update-form" novalidate>
+  {% csrf_token %}
+  <div class="modal-body">
+   {% for field in formulario %}
+   
+       <div class="form-group{% if field.errors %} has-error{% endif %}">
+          <label for="nombre">{{field.label}}</label>
+          {{field}}
+          {% for error in field.errors %}
+            <p class="alert alert-danger mt-2">{{ error }}</p>
+          {% endfor %}
+       </div>  
+       
+    {% endfor %} 
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+  </div>
+</form>
+
+
+                    
